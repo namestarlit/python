@@ -1,5 +1,7 @@
 # end=' ' connects the next print statement
 # with the preceeding one.
+# It tells the print not to end the line
+# with a newline character.
 print("How old are you?", end=' ')
 age = input()
 
