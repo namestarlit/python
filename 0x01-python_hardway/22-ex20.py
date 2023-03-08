@@ -33,8 +33,8 @@ current_line = 1
 print_a_line(current_line, current_file)
 
 # increment the line count by 1
-current_line = current_line + 1
+current_line += 1
 print_a_line(current_line, current_file)
 # increment line count by 1 more line
-current_line = current_line + 1
+current_line += 1
 print_a_line(current_line, current_file)
