@@ -1,4 +1,8 @@
-## RENAME THIS FILE FROM 27-ex25.py TO ex25.py TO USE IT ##
+## RENAME THIS FILE FROM 27-ex25.py TO ex25.py TO USE THIS MODULE ##
+
+# """This are called documentantion comments"""
+# you use them by doing something like: help(ex25), and help(ex25.break_words)
+
 
 def break_words(stuff):
     """This function will break up words for us."""
