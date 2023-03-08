@@ -12,6 +12,9 @@ print(f"Here's your file {filename}")
 # read() function reads a file
 print(txt.read())
 
+# close the file using close() function
+txt.close()
+
 print("Type the filename again")
 # read file name from stdin/user using input()
 file_again = input("> ")
@@ -21,3 +24,6 @@ txt_again = open(file_again)
 # print content of the file
 # using print() and read() functions
 print(txt_again.read())
+
+# close the file using close() function
+txt_again.close()
