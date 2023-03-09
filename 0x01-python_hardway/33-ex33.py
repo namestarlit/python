@@ -1,9 +1,10 @@
 # initialize i to 0
 i = 0
+size = 6
 numbers = []
 
 # while-loop to append values into numbers list
-while i < 6:
+while i < size:
     print(f"At the top i is {i}")
     numbers.append(i)
 
