@@ -1,3 +1,5 @@
+# You need internet connection to run this
+
 import random
 from urllib.request import urlopen
 import sys
