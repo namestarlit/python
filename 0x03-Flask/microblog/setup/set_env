@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Exports environment variables to be used on this project
+
+export PYTHONPATH=`(pwd)`
