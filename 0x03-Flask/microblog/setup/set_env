@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # Exports environment variables to be used on this project
 
+# Export python path.
 export PYTHONPATH=`(pwd)`
+
+Flask env variables.
+export FLASK_APP=microblog.py
