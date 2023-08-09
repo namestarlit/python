@@ -3,6 +3,3 @@
 
 # Export python path.
 export PYTHONPATH=`(pwd)`
-
-Flask env variables.
-export FLASK_APP=microblog.py
