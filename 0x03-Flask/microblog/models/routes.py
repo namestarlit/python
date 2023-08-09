@@ -6,5 +6,5 @@ from models import app
 @app.route('/index')
 def index():
     user = {'username': 'Starlit'}
-    page = render_template('index.html', title='Home', user=user)
+    page = render_template('index.html', user=user)
     return page
