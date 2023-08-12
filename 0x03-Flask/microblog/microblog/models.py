@@ -1,9 +1,18 @@
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from microblog import login
 
 from microblog import db
 
 
-class User(db.Model):
+@login.user_loader
+def load_user(id):
+    """Loads the user ID for login session."""
+    return User.query.get(int(id))
+
+
+class User(UserMixin, db.Model):
     """Defines a class User."""
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64), index=True, unique=True,
@@ -19,6 +28,14 @@ class User(db.Model):
                         self.id, self.username,
                         self.email)
                 )
+
+    def set_password(self, password):
+        """Sets the password hash."""
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        """Validates the password."""
+        return check_password_hash(self.password_hash, password)
 
 
 class Post(db.Model):
