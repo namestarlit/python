@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Main application module."""
 
-from models import app
+from microblog import app
 
 
 if __name__ == '__main__':
