@@ -79,3 +79,17 @@ def register():
     register_page = render_template('register.html', title='Register',
                                     form=form)
     return register_page
+
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    """Defines user route."""
+    user = User.query.filter_by(username=username).first_or_404()
+
+    posts = [
+            {'author': user, 'body': 'Test Post #1'},
+            {'author': user, 'body': 'Test Post #2'}
+            ]
+    user_page = render_template('user.html', user=user, posts=posts)
+    return user_page
