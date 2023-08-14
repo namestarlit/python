@@ -21,7 +21,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Import routes here to avoid circular imports.
-from microblog import routes, models
+from microblog import routes, models, errors
 
 # Create tables within an application context
 #with app.app_context():
