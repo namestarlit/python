@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import render_template, url_for
 from flask import flash, redirect, request
 from flask_login import current_user, login_user, logout_user
@@ -5,12 +7,11 @@ from flask_login import login_required
 from werkzeug.urls import url_parse
 
 from microblog import app, db
-from microblog.forms import LoginForm, RegistrationForm
+from microblog.forms import LoginForm, RegistrationForm, EditProfileForm
 from microblog.models import User
 
 
 @app.route('/')
-@app.route('/index')
 @login_required
 def index():
     user = {'username': 'Starlit'}
@@ -93,3 +94,34 @@ def user(username):
             ]
     user_page = render_template('user.html', user=user, posts=posts)
     return user_page
+
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    """Defines edit profle route."""
+    form = EditProfileForm()
+    
+    if form.validate_on_submit():
+        with app.app_context():
+            current_user.username = form.username.data
+            current_user.about_me = form.about_me.data
+            db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+
+    edit_page = render_template('edit_profile.html', title='Edit Profile',
+                                form=form)
+    return edit_page
+
+
+@app.before_request
+def before_request():
+    """Records the last time the request is sent."""
+    if current_user.is_authenticated:
+        with app.app_context():
+            current_user.last_seen = datetime.utcnow()
+            db.session.commit()
