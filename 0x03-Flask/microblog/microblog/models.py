@@ -15,6 +15,7 @@ def load_user(id):
 
 class User(UserMixin, db.Model):
     """Defines a class User."""
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64), index=True, unique=True,
                          nullable=False)
@@ -48,10 +49,11 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     """Defines a class Post."""
+    __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
         """String representantion of Post class."""
