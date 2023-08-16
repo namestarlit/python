@@ -100,7 +100,7 @@ def user(username):
 @login_required
 def edit_profile():
     """Defines edit profle route."""
-    form = EditProfileForm()
+    form = EditProfileForm(current_user.username)
     
     if form.validate_on_submit():
         with app.app_context():
