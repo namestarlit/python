@@ -3,8 +3,7 @@ from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-from microblog import login
-from microblog import db
+from microblog import db, login
 
 
 @login.user_loader
@@ -63,7 +62,7 @@ class User(UserMixin, db.Model):
     def follow(self, user):
         """User following a user."""
         if not self.is_following(user):
-            self.followed.apppend(user)
+            self.followed.append(user)
 
     def unfollow(self, user):
         """User unfollowing a user."""
