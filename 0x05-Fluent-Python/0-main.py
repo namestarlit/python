@@ -13,11 +13,11 @@ print(beer_card)
 
 # create an instance of FrenchDeck class
 deck = FrenchDeck()
-print(len(deck)) # length of the deck
+print(len(deck))  # length of the deck
 print(deck[0])  # the first card
-print(deck[-1]) # the last card
-print(choice(deck)) # a random card from deck
-print(deck[:3]) # slicing
+print(deck[-1])  # the last card
+print(choice(deck))  # a random card from deck
+print(deck[:3])  # slicing
 print(deck[12::13])
 
 # iterate through the cards
@@ -35,9 +35,11 @@ print(Card("7", "beasts") in deck)
 # sorting the cards
 suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
 
+
 def spades_high(card):
-    rank_values =FrenchDeck.ranks.index(card.rank)
+    rank_values = FrenchDeck.ranks.index(card.rank)
     return rank_values * len(suit_values) + suit_values[card.suit]
+
 
 for card in sorted(deck, key=spades_high):
     print(card)
